@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "packages": {
+    "@shiguredo/rnnoise-wasm": {
+      "version": "0.0.0",
+      "signature": "fd20c02046443c44e5cb71d07456e134",
+      "file": true
+    }
+  }
+}
