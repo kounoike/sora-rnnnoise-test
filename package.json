@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "wasm": "cp node_modules/@shiguredo/rnnoise-wasm/dist/rnnoise.wasm public/"
   },
   "dependencies": {
     "@shiguredo/rnnoise-wasm": "file:.yalc/@shiguredo/rnnoise-wasm",
