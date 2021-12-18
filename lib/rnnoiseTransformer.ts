@@ -22,13 +22,20 @@ export function getRnnoiseTransformer (
       buffer = new Float32Array(audioData.numberOfFrames)
     }
     audioData.copyTo(buffer, opts)
-
     // 比較用
     const buffer2 = new Float32Array(buffer)
+    // convert to 16bit PCM
+    for (let i = 0; i < buffer.length; ++i) {
+      buffer[i] *= 0x7fff
+    }
 
     // Rnnoiseが480フレームしか処理できないからホントは区切って渡さないといけないんだけど
     // たまたまBreakout boxも480フレームで渡してくるからサボってそのままにしている
     const vad = rnnoise.processFrame(buffer)
+    // reverse convert
+    for (let i = 0; i < buffer.length; ++i) {
+      buffer[i] /= 0x7fff
+    }
     const newAudioData = new AudioData({
       format: audioData.format,
       numberOfChannels: audioData.numberOfChannels,
